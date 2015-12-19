@@ -1,0 +1,45 @@
+<home>
+     <panel class="emercency-services" ng-controller="EmergencyCtrl">
+            <h6 class="title">Emercengy Services</h6>
+            
+            <div class="card-drop">
+               {{test}}
+                <div class="down-icon">
+                    <i class="fa fa-arrow-circle-o-down fa-3x"  ng-click="cardDropDownToggle = !cardDropDownToggle"></i>
+                </div>
+                <div class="dropdown" ng-class="{'open':cardDropDownToggle}">{{cardDropdownToggle}}
+                     <button class="btn btn-block btn-need-help">Need Help</button>
+            <button class="btn btn-block btn-need-help">Not Feeling Good</button>
+                    
+                </div>
+            </div>
+        </panel>
+        <panel class="news">
+            <h6 class="title">News</h6>
+            <ul class="list">
+                <li ng-repeat=" i in [1,2,3,4]" class="clearfix">
+                    <img src="imgs/users/me.jpg" class="news-thumb" alt="News">
+                   <div class="xxxx">
+                        <h5>
+                       Goverment announced 5% tax benefits for women.
+                    </h5>
+                    <h6>2 hrs ago </h6>
+                   </div>
+                </li>
+                
+                <li ui-sref="news">More</li>
+
+            </ul>
+
+
+        </panel>
+        <panel class="emercency-services">
+            <h1>Help Someone</h1>
+
+        </panel>
+        <panel class="emercency-services">
+            <h1>Police Services</h1>
+
+        </panel>
+    
+</home>

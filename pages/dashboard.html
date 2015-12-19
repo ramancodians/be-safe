@@ -1,0 +1,47 @@
+<toolbar>
+    <span>
+            <i class="fa" ng-click="sidenavToggle = !sidenavToggle" ng-class="{'fa-bars':!sidenavToggle, 'fa-times': sidenavToggle}"></i>
+            <span class="title">Be-Safe</span>
+    </span>
+</toolbar>
+<sidenav ng-class="{'open':sidenavToggle}">
+    <panel>
+        <div>
+            <img ng-src="imgs/users/sonali.jpg" alt="username" class="user-photo">
+            <h5 class="npm">Alex Verma</h5>
+        </div>
+    </panel>
+    <ul class="nav-list npm">
+        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.home">
+            <i class="fa fa-home"></i>
+            <span> Home </span>
+        </li>
+        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.forum">
+            <i class="fa fa-comments-o">
+            </i> <span> Forum </span>
+            <span class="updates">43</span>
+        </li>
+        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.organisations">
+            <i class="fa fa-bank"></i>
+            <span> Organisations </span>
+        </li>
+        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.settings">
+            <i class="fa fa-cog"></i>
+            <span> Settings </span>
+        </li>
+        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.about">
+            <i class="fa fa-info"></i>
+            <span> About </span>
+        </li>
+    </ul>
+
+</sidenav>
+
+<div class="overlay" ng-click="sidenavToggle = !sidenavToggle" ng-hide="!sidenavToggle">
+    <span class="vertical-text">Close</span>
+
+</div>
+
+<div ui-view class="dashboard">
+
+</div>

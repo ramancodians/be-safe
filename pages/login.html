@@ -1,0 +1,29 @@
+<div class="login" ng-controller="LoginCtrl">
+    <div class="brand">
+        <h1 class="npm">Be Safe</h1>
+        <h6 class="npm">We stand together</h6>
+       
+        <form class="login-form">
+           <div class="error" ng-show="login.error">
+               <p> <i class="fa fa-info"></i> Invalid username or password</p>
+           </div>
+           
+            <input type="email" name="username" class="input" placeholder="Your email" ng-model="email" required>
+            <input type="password" name="username" class="input" placeholder="Your password" ng-model="magicWord" required>
+            <div class="controls">
+
+                <button class="btn register" ui-sref="registration">
+                    Register
+                </button>
+
+                <button class="btn login-btn" ng-click="login()" type="submit">Login</button>
+                
+                <a ui-sref="dashboard.home">home</a>
+
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

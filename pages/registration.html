@@ -1,0 +1,26 @@
+<div class="registration" ng-controller="RegistrationCtrl">
+    <div class="brand">
+        <h2 class="npm">Be Safe</h2>
+        <h5 class="npm">Registration
+</h5>
+        <hr>
+
+        <form class="login-form">
+            <input type="text" name="name" class="input" placeholder="Name" ng-model="userName">
+            <input type="email" name="name" class="input" placeholder="Email" ng-model="email">
+            <input type="password" name="username" class="input" placeholder="Your password" ng-model="magicWord">
+            <div class="controls">
+
+                <button class="btn register" ui-sref="login">
+                   Not Now
+                </button>
+
+                <button class="btn login-btn" ng-click="register()">Register</button>
+
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

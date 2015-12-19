@@ -1,0 +1,268 @@
+$toolbar-color: #F62459;
+$sidepanel-color: #ededed;
+$toolbar-height: 53px;
+$dark-grey: #4b4b4b;
+$light-green: #87D37C;
+$title-color : #818181;
+$card-border-color : #cecece;
+
+// IMPORTS
+@import 'partials/normalize';
+@import 'partials/variables';
+@import 'partials/helpers';
+@import 'components/login';
+* {
+    box-sizing: border-box;
+    -wekit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.holder {
+    max-width: 450px;
+    display: block;
+    margin: 0px auto;
+    color: #999;
+}
+
+// padding to adjust toolbar
+.dashboard{
+    padding-top: $toolbar-height;
+}
+
+
+toolbar {
+    display: block;
+    background: $toolbar-color;
+    color: #FFF;
+    z-index: 20;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    height: $toolbar-height;
+    .fa {
+        font-size: 25px;
+        padding: 14px;
+        background: $toolbar-color - 10;
+        &:hover {
+            background: $toolbar-color - 30;
+        }
+    }
+    .title {
+        font-size: 18px;
+        display: inline-block;
+        position: relative;
+        transform: translateX(10px);
+    }
+}
+
+sidenav {
+    position: fixed;
+    width: 230px;
+    background: #FFF;
+    height: 100%;
+    top: $toolbar-height;
+    left: -240px;
+    border-right: 1px solid #CCC;
+    -webkit-box-shadow: 0px 0px 27px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 27px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 27px 1px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition-duration: 0.5s;
+    animation: all ease-in-out;
+    &.open {
+        transform: translateX(240px);
+    }
+    panel {
+        text-align: center;
+        display: block;
+        div {
+            background: $sidepanel-color;
+            -webkit-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
+            -moz-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
+            box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
+            padding: 30px 20px;
+            .user-photo {
+                width: 100%;
+                margin: 0px auto;
+                border-radius: 50%;
+                max-width: 70px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    ul.nav-list {
+        li {
+            list-style-type: none;
+            border-bottom: 1px solid #ededed;
+            &:last-child {
+                border: 0px;
+            }
+            .updates {
+                float: right;
+                background: red;
+                border-radius: 50%;
+                font-size: 10px;
+                font-weight: bold;
+                color: #FFF;
+                padding: 4px;
+                margin-top: 13px;
+                margin-right: 15px;
+            }
+            span {
+                font-size: 14px;
+                font-weight: bold;
+                color: #444;
+            }
+            .fa {
+                padding: 10px;
+                width: 42px;
+                height: 42px;
+                font-size: 22px;
+                text-align: center;
+                color: #4e79be;
+            }
+        }
+    }
+}
+
+home {
+    panel {
+        background: #FFF;
+        display: block;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 4px;
+        border: 1px solid $card-border-color;
+        
+        h6.title {
+            margin-bottom: 10px;
+            margin-top: 0px;
+            color: $title-color;
+        }
+       
+    }
+    .news {
+        ul.list {
+            li {
+                display: block;
+                border-bottom: 1px #eee - 20 dashed;
+                padding: 10px 0px;
+                height: 70px;
+                
+                &:last-child{
+                    height: auto;
+                    text-align: center;
+                    font-size: 12px;
+                    background: #eee;
+                    border: 1px solid #eee - 20;
+                    margin-top: 5px;
+                }
+                
+                img {
+                    width: 18%;
+                    margin-right: 5px;
+                    max-width: 60px;
+                    display: inline-block;
+                    
+                }
+                
+                div.xxxx{
+                    display: inline-block;
+                    width: 80%;
+                    float: left;
+                    padding: 0px;
+                    
+                    h6,h5{
+                        padding: 0px;
+                        margin: 0px;
+                    }
+                    
+                    h5{
+                        margin-bottom: 4px;
+                    }
+                    
+                    h6{
+                        color: #888;
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+.btn {
+    padding: 10px;
+    background: #dedede;
+    border: 0px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #333;
+    &.btn-block {
+        display: block;
+        margin-bottom: 3px;
+        width: 100%;
+    }
+}
+
+ul.list {
+    padding: 0px;
+    margin: 0px;
+    li {
+        list-style-type: none;
+    }
+}
+
+.login,
+.registration {
+    background: $toolbar-color;
+    color: #FFF;
+    position: fixed;
+    top: 0px;
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    hr {
+        width: 100%;
+        height: 10px;
+        border: 0px;
+        color: #FFF;
+        border-bottom: 1px solid $toolbar-color + 50;
+        margin-bottom: 20px;
+    }
+    .brand {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        //        padding: 20px 10px;
+        //        background: rgba(#000,0.1);
+        //        border-radius: 5px;
+        //        border: solid 2px rgba(#000,0.05);
+        h6,
+        h5 {
+            opacity: 0.7;
+            margin-bottom: 20px !important;
+        }
+        .controls {
+            .login-btn {
+                float: right;
+                background: $light-green - 40;
+                color: #FFF;
+                padding: 10px 30px;
+                //border: 2px solid $light-green - 60;
+            }
+            .register {
+                float: left;
+                padding: 10px;
+                background: none;
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.forum{
+    padding: 10px;
+}
