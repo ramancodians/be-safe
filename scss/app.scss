@@ -5,6 +5,7 @@ $dark-grey: #4b4b4b;
 $light-green: #87D37C;
 $title-color : #818181;
 $card-border-color : #cecece;
+$vote-down-color : #b52a2a;
 
 // IMPORTS
 @import 'partials/normalize';
@@ -46,6 +47,10 @@ toolbar {
         background: $toolbar-color - 10;
         &:hover {
             background: $toolbar-color - 30;
+        }
+        
+        &.right{
+            float: right;
         }
     }
     .title {
@@ -127,21 +132,48 @@ sidenav {
 }
 
 home {
+    color: #292929;
     panel {
         background: #FFF;
         display: block;
         padding: 10px;
         margin: 10px;
         border-radius: 4px;
-        border: 1px solid $card-border-color;
-        
+        border: 1px solid $card-border-color;       
         h6.title {
             margin-bottom: 10px;
             margin-top: 0px;
             color: $title-color;
+            font-size: 13px;
+            color: #666 !important;
         }
        
     }
+    
+    panel.forum{
+          font-size: 13px;
+        ul.list{
+             li:last-child{
+                    height: auto;
+                    text-align: center;
+                    font-size: 12px;
+                    background: #eee;
+                    border: 1px solid #eee - 20;
+                    margin-top: 5px;
+                 padding: 10px;
+                }
+            
+            p{
+                color: #888;
+                
+                b{
+                    color: #222;
+                }
+            }
+            
+        }
+    }
+    
     .news {
         ul.list {
             li {
@@ -189,7 +221,10 @@ home {
                 }
             }
         }
+    
     }
+    
+   
 }
 
 .btn {

@@ -2,23 +2,29 @@
     <div class="brand">
         <h1 class="npm">Be Safe</h1>
         <h6 class="npm">We stand together</h6>
-       
-        <form class="login-form">
-           <div class="error" ng-show="login.error">
-               <p> <i class="fa fa-info"></i> Invalid username or password</p>
-           </div>
-           
+        
+        <div class="error" ng-show="loginForm">
+                <p> <i class="fa fa-info"></i> Invalid username or password</p>
+            </div>
+
+            <div class="sk-folding-cube loader" ng-show="loading">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
+
+        <form class="login-form" ng-hide="loading">
             <input type="email" name="username" class="input" placeholder="Your email" ng-model="email" required>
             <input type="password" name="username" class="input" placeholder="Your password" ng-model="magicWord" required>
             <div class="controls">
-
                 <button class="btn register" ui-sref="registration">
                     Register
                 </button>
 
                 <button class="btn login-btn" ng-click="login()" type="submit">Login</button>
-                
-                <a ui-sref="dashboard.home">home</a>
+
+                <!--<a ui-sref="dashboard.home">home</a>-->
 
 
             </div>

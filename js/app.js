@@ -1,5 +1,5 @@
 // init angular -> <body ng-app="app-name">
-var app = angular.module('app', ['ui.router', 'firebase']);
+var app = angular.module('app', ['ui.router', 'firebase','angularRipple']);
 
 
 // Routes CONFIG
@@ -16,7 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         })
         .state('dashboard', {
             url: "/dashboard",
-            templateUrl : 'pages/dashboard.html'
+            templateUrl: 'pages/dashboard.html'
         })
         //Logged template
         .state('dashboard.home', {
@@ -26,6 +26,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('dashboard.forum', {
             url: "/forum",
             templateUrl: "pages/logged/forum.html"
+        })
+        .state('dashboard.profile', {
+            url: "/profile",
+            templateUrl: "pages/logged/profile.html"
+        })
+        .state('dashboard.search', {
+            url: "/search",
+            templateUrl: "pages/logged/search.html"
+        })
+        .state('dashboard.settings', {
+            url: "/settings",
+            templateUrl: "pages/logged/setting.html"
         })
         .state('dashboard.organisations', {
             url: "/organisations",
@@ -45,10 +57,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 //SERVICES
 app.factory('Auth', function ($firebaseArray, $firebaseAuth) {
     var url = "https://be-safe.firebaseio.com";
-
     var ref = new Firebase(url);
     return $firebaseAuth(ref);
 
+});
+
+app.run(function ($rootScope) {
+    $rootScope.Title = 'Be Safe';
+    $rootScope.SearchIcon = true;
+    $rootScope.backBtn = false;
 });
 
 
@@ -58,36 +75,98 @@ app.controller('SidenavCtrl', function ($scope) {
     $scope.sidenavToggle = false;
 });
 
-// EMERGENCY CONTROLLER
-app.controller('EmergencyCtrl', function ($scope) {
+app.controller('SettingsCtrl', function ($scope,$rootScope) {
+    $rootScope.Title = "Settings"
+    
+});
+
+app.controller('DashboardCtrl', function ($scope,$rootScope) {
+    $rootScope.Title = "Settings";
+    $rootScope.backBtn = false;
+});
+
+
+app.controller('SearchCtrl', function ($scope, $rootScope) {
+    // hide the search icon from title bar
+    $rootScope.SearchIcon = false;
+    $rootScope.backBtn = true;
+
+    // set title to search
+    $rootScope.Title = "Search";
+});
+
+
+app.controller('HomeCtrl', function ($scope, $rootScope, Auth) {
+    console.log("Home Page");
+    //show seach icon
+    $rootScope.SearchIcon = true;
+
     $scope.cardDropDownToggle = false;
+    $rootScope.Title = "Home";
+
+});
+
+
+app.controller('ForumCtrl', function ($scope, $rootScope) {
+    console.log("Forum Page");
+
+    $scope.queries = [{
+        "uid": '11111eeeee',
+        "name": "Alka Sharma",
+        "type": 'question',
+        "question": "What act can be used against dowry?",
+        "description": "I'm 24 years and my parents are in insisting me to marry. I'm also kinda ok with it with I don' want my parents to give dowry",
+        "upVotes": 32,
+        "downVote": 3
+     }];
+
+    //show seach icon
+    $rootScope.SearchIcon = true;
+
+    $rootScope.Title = "Forum";
+});
+
+app.controller('ProfileCtrl', function ($scope, $rootScope) {
+    console.log("Profile Page");
+    $rootScope.Title = "Username";
 
 });
 
 //LOGIN CONTROLLER
-app.controller('LoginCtrl', function ($scope, Auth) {
+app.controller('LoginCtrl', function ($scope, $location, Auth) {
     // debuging
     console.log("Login Page");
+
+    $scope.loginForm = false;
+    $scope.loading = false;
+
     //login with email and password
     $scope.login = function () {
             //calling firebase Auth
+            $scope.loading = true;
             Auth.$authWithPassword({
                 email: $scope.email,
                 password: $scope.magicWord
             }).then(function (AuthData) {
                 //success
                 console.log(AuthData);
+                $location.path('/dashboard/home');
+
             }).catch(function (error) {
                 // failed
+                if (error) {
+                    $scope.loading = false;
+                    $scope.loginForm = true;
+                }
                 console.log(error);
             });
         } // login function
-});
+}); // LOGIN CTRL *************************************************
 
 
 //Registration Ctrl
 
-app.controller('RegistrationCtrl', function ($scope, Auth) {
+app.controller('RegistrationCtrl', function ($scope, $location, Auth) {
     console.log("Registration Page");
     $scope.register = function () {
         Auth.$createUser({
@@ -97,13 +176,15 @@ app.controller('RegistrationCtrl', function ($scope, Auth) {
         }).then(function (userData) {
             //user created
             console.log(userData);
+            $location.path('/login');
         }).catch(function (error) {
             // failed
             console.log(error);
         });
     }
 
-});
+}); //REGISTRATION CTRL *********************************************
+
 
 
 

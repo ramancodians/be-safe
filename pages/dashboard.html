@@ -1,47 +1,53 @@
-<toolbar>
-    <span>
-            <i class="fa" ng-click="sidenavToggle = !sidenavToggle" ng-class="{'fa-bars':!sidenavToggle, 'fa-times': sidenavToggle}"></i>
-            <span class="title">Be-Safe</span>
-    </span>
-</toolbar>
-<sidenav ng-class="{'open':sidenavToggle}">
-    <panel>
-        <div>
-            <img ng-src="imgs/users/sonali.jpg" alt="username" class="user-photo">
-            <h5 class="npm">Alex Verma</h5>
-        </div>
-    </panel>
-    <ul class="nav-list npm">
-        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.home">
-            <i class="fa fa-home"></i>
-            <span> Home </span>
-        </li>
-        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.forum">
-            <i class="fa fa-comments-o">
+<div ng-controller="DashboardCtrl">
+    <toolbar>
+        <span>
+            <i class="fa" ng-click="sidenavToggle = !sidenavToggle" ng-class="{'fa-bars':!sidenavToggle, 'fa-times': sidenavToggle}" ng-hide="backBtn"></i>
+             <i class="fa fa-arrow-left" ui-sref="dashboard.home" ng-show="backBtn" ng-click="backBtn = !backBtn"></i>
+            <span class="title">{{Title}}</span>
+        <span class="search" ui-sref="dashboard.search" ng-show="SearchIcon" ng-click="backBtn = !backBtn"><i class="fa fa-search right"></i></span>
+
+        </span>
+    </toolbar>
+    <sidenav ng-class="{'open':sidenavToggle}">
+        <panel angular-ripple>
+            <div ui-sref="dashboard.profile" ng-click="sidenavToggle = !sidenavToggle">
+                <img ng-src="imgs/users/sonali.jpg" alt="username" class="user-photo">
+                <h5 class="npm">Alex Verma</h5>
+            </div>
+        </panel>
+        <ul class="nav-list npm">
+            <li angular-ripple ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.home">
+                <i class="fa fa-home"></i>
+                <span> Home </span>
+            </li>
+            <li angular-ripple ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.forum">
+                <i class="fa fa-comments-o">
             </i> <span> Forum </span>
-            <span class="updates">43</span>
-        </li>
-        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.organisations">
-            <i class="fa fa-bank"></i>
-            <span> Organisations </span>
-        </li>
-        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.settings">
-            <i class="fa fa-cog"></i>
-            <span> Settings </span>
-        </li>
-        <li ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.about">
-            <i class="fa fa-info"></i>
-            <span> About </span>
-        </li>
-    </ul>
+                <span class="updates">43</span>
+            </li>
+            <li angular-ripple ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.organisations">
+                <i class="fa fa-bank"></i>
+                <span> Organisations </span>
+            </li>
+            <li angular-ripple ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.settings">
+                <i class="fa fa-cog"></i>
+                <span> Settings </span>
+            </li>
+            <li angular-ripple ng-click="sidenavToggle = !sidenavToggle" ui-sref="dashboard.about">
+                <i class="fa fa-info"></i>
+                <span> About </span>
+            </li>
+        </ul>
 
-</sidenav>
+    </sidenav>
 
-<div class="overlay" ng-click="sidenavToggle = !sidenavToggle" ng-hide="!sidenavToggle">
-    <span class="vertical-text">Close</span>
+    <div class="overlay" ng-click="sidenavToggle = !sidenavToggle" ng-hide="!sidenavToggle">
+        <span class="vertical-text">Close</span>
 
-</div>
+    </div>
 
-<div ui-view class="dashboard">
+    <div ui-view class="dashboard">
+
+    </div>
 
 </div>

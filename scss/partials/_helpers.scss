@@ -4,41 +4,39 @@
     margin: 0px !important;
 }
 
-.img-res{
+.img-res {
     width: 100%;
     display: inline-block;
 }
 
-.overlay{
+.overlay {
     height: 100%;
     width: 100%;
-    background: rgba(#000,0.7);
+    background: rgba(#000, 0.7);
     position: fixed;
     top: 0px;
     transition-duration: 0.4s;
 }
 
-.card-drop{
-    .down-icon{
+.card-drop {
+    .down-icon {
         text-align: center;
         color: #37b1ce;
     }
-    
-    .dropdown{
+    .dropdown {
         transition-duration: 1s;
         position: relative;
         overflow: hidden;
         height: 0px;
-        
-        &.open{
-           height: auto;
+        &.open {
+            height: auto;
         }
     }
 }
 
 .vertical-text {
-	transform: rotate(90deg);
-	transform-origin: left top 0;
+    transform: rotate(90deg);
+    transform-origin: left top 0;
     position: absolute;
     right: 0px;
     top: 290px;
@@ -47,7 +45,7 @@
     color: #767676;
 }
 
-input.input{
+input.input {
     width: 100%;
     margin-bottom: 8px;
     border-radius: 4px;
@@ -59,52 +57,68 @@ input.input{
 }
 
 .clearfix:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-     }
-.clearfix { display: inline-block; }
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+
 /* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
+
+* html .clearfix {
+    height: 1%;
+}
+
+.clearfix {
+    display: block;
+}
+
+
 /* close commented backslash hack */
 
-.card{
+.card {
     background: #FFF;
     padding: 15px;
     border-radius: 4px;
     border: 1px solid #bcbcbc;
-    
+    border-bottom: 2px solid #bcbcbc - 10;
+    margin-bottom: 10px;
 }
 
- .tabs{
-    background: #FFF;
+.tabs {   
     border-radius: 4px;
     margin-bottom: 10px;
     display: block;
-     
-     .tab{
-         display: inline-block;
-            border: 1px solid $card-border-color;
-         padding: 7px;
-         text-align: center;
-         font-size: 13px;
-         font-weight: bold;
-         color: #444;
-         width: 33%;
-         margin: 0px;
-         float: left;
-         
-         &.active{
-             background: #d9f3ff;
-         }
-     }
+    .tab {
+        background: #FFF;
+        display: inline-block;
+        border: 1px solid $card-border-color;
+        padding: 7px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        color: #444;
+        width: 33%;
+        margin: 0px;
+        float: left;
+        &.active {
+            background: #d9f3ff;
+        }
+    }
 }
 
-.error{
+.loader {
+    margin: 30px auto !important;
+}
+
+.error {
     //background: #79b1d9;
     color: #ffffff;
     font-weight: bold;
@@ -112,16 +126,14 @@ input.input{
     padding: 10px 5px;
     border-radius: 4px;
     margin-bottom: 5px;
-    
-    p{
+    p {
         font-size: 12px;
         padding: 0px;
         margin: 0px;
-        
-        .fa{
+        .fa {
             font-size: 100%;
             height: 20px;
-            width:  20px;
+            width: 20px;
             padding: 3px;
             color: #FFF;
             border-radius: 50%;
@@ -130,4 +142,171 @@ input.input{
         }
     }
 }
-   
+
+.sk-folding-cube {
+    margin: 20px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.sk-folding-cube .sk-cube:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+    animation: sk-foldCubeAngle 2.4s infinite linear both;
+    -webkit-transform-origin: 100% 100%;
+    -ms-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+.sk-folding-cube .sk-cube2 {
+    -webkit-transform: scale(1.1) rotateZ(90deg);
+    transform: scale(1.1) rotateZ(90deg);
+}
+
+.sk-folding-cube .sk-cube3 {
+    -webkit-transform: scale(1.1) rotateZ(180deg);
+    transform: scale(1.1) rotateZ(180deg);
+}
+
+.sk-folding-cube .sk-cube4 {
+    -webkit-transform: scale(1.1) rotateZ(270deg);
+    transform: scale(1.1) rotateZ(270deg);
+}
+
+.sk-folding-cube .sk-cube2:before {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.sk-folding-cube .sk-cube3:before {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.sk-folding-cube .sk-cube4:before {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+@-webkit-keyframes sk-foldCubeAngle {
+    0%,
+    10% {
+        -webkit-transform: perspective(140px) rotateX(-180deg);
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+    }
+    25%,
+    75% {
+        -webkit-transform: perspective(140px) rotateX(0deg);
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+    }
+    90%,
+    100% {
+        -webkit-transform: perspective(140px) rotateY(180deg);
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-foldCubeAngle {
+    0%,
+    10% {
+        -webkit-transform: perspective(140px) rotateX(-180deg);
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+    }
+    25%,
+    75% {
+        -webkit-transform: perspective(140px) rotateX(0deg);
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+    }
+    90%,
+    100% {
+        -webkit-transform: perspective(140px) rotateY(180deg);
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+.card {
+    color: #222;
+    &.forum {
+        .who {
+            font-size: 13px;
+            color: #505050;
+            margin: 0px;
+            b {
+                color: #222;
+            }
+        }
+        .ques {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .details {
+            font-size: 13px;
+            color: #888;
+        }
+        time {
+            font-size: 12px;
+            font-weight: bold;
+            color: #aaa;
+            top: 10px;
+            position: relative;
+        }
+        .votes {
+            float: right;
+            .btn {
+                color: #FFF;
+                &.up {
+                    background: $light-green - 30;
+                }
+                &.down {
+                    background: $vote-down-color;
+                }
+            }
+        }
+    }
+}
+
+ [angular-ripple] {
+    position: relative;
+    overflow: hidden;
+  }
+  .angular-ripple {
+    display: block;
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 50%;
+    transform: scale(0);
+  }
+  .angular-ripple.animate {
+    animation: ripple 0.35s linear;
+  }
+  @keyframes ripple {
+    100% {
+      opacity: 0;
+      transform: scale(2.5);
+    }
+  }

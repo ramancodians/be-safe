@@ -1,4 +1,4 @@
-<div class="forum">
+<div class="forum" ng-controller="ForumCtrl">
   <div class="tabs clearfix">
       <div class="tab active">
           Popular 
@@ -11,8 +11,22 @@
       </div>
   </div>
   
-   <div class="card">
-     <h4>Enables additional debugging information in the output file as CSS comments?</h4> 
+   <div class="card forum" ng-repeat="i in queries">
+     <p class="who"><b>{{i.name}}</b> <span ng-if="i.type === 'question'">asked</span></p>
+     <h4 class="ques">{{i.question}}</h4>
+     
+     <img ng-src="imgs/stock/img3.jpg" class="img-res media" alt="Artcle Image" ng-if="$index%2">
+     
+     <p class="details">{{i.description}}
+     </p>
+     <div class="clearfix">
+         <time>3 hrs ago</time>
+        <span class="votes">
+            <button  angular-ripple class="btn up"> <span><i class="fa fa-arrow-up"></i> {{i.upVotes}}</span></button>
+         <button  angular-ripple class="btn down"><span ><i class="fa fa-arrow-down"></i> {{i.downVote}}</span></button>
+        </span>
+         
+     </div>
       
       
    </div>
