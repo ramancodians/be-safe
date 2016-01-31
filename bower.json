@@ -15,7 +15,7 @@
     "livereload"
   ],
   "license": "MIT",
-  "homepage": "raman.ch",
+  "homepage": "https://raman.ch",
   "ignore": [
     "**/.*",
     "node_modules",

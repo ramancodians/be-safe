@@ -1,5 +1,5 @@
 // init angular -> <body ng-app="app-name">
-var app = angular.module('app', ['ui.router', 'firebase','angularRipple']);
+var app = angular.module('app', ['ui.router', 'firebase', 'angularRipple']);
 
 
 // Routes CONFIG
@@ -26,6 +26,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('dashboard.forum', {
             url: "/forum",
             templateUrl: "pages/logged/forum.html"
+        })
+        .state('dashboard.addQuery', {
+            url: "/addQuery",
+            templateUrl: "pages/logged/addQuery.html"
         })
         .state('dashboard.profile', {
             url: "/profile",
@@ -59,7 +63,12 @@ app.factory('Auth', function ($firebaseArray, $firebaseAuth) {
     var url = "https://be-safe.firebaseio.com";
     var ref = new Firebase(url);
     return $firebaseAuth(ref);
+});
 
+app.factory('Queries', function($firebaseArray){
+    var url = "https://be-safe.firebaseio.com/queries";
+    var ref = new Firebase(url);
+    return $firebaseArray(ref);
 });
 
 app.run(function ($rootScope) {
@@ -75,12 +84,12 @@ app.controller('SidenavCtrl', function ($scope) {
     $scope.sidenavToggle = false;
 });
 
-app.controller('SettingsCtrl', function ($scope,$rootScope) {
+app.controller('SettingsCtrl', function ($scope, $rootScope) {
     $rootScope.Title = "Settings"
-    
+
 });
 
-app.controller('DashboardCtrl', function ($scope,$rootScope) {
+app.controller('DashboardCtrl', function ($scope, $rootScope) {
     $rootScope.Title = "Settings";
     $rootScope.backBtn = false;
 });
@@ -96,30 +105,58 @@ app.controller('SearchCtrl', function ($scope, $rootScope) {
 });
 
 
-app.controller('HomeCtrl', function ($scope, $rootScope, Auth) {
+app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
     console.log("Home Page");
     //show seach icon
     $rootScope.SearchIcon = true;
-
     $scope.cardDropDownToggle = false;
     $rootScope.Title = "Home";
 
+    $scope.queries = Queries;
+    console.log($scope.queries);
+    
+    $scope.queries.$loaded().then(function(){
+        $scope.QueryLoaded = true;
+    });
+    
+    
+    
+    // adding a dummy query
+    
+    var dummy = {
+        "username" : 'Vidya N.',
+        "userId" : '124',
+        "type" : 'question',
+        "description" : 'plain simple text plain simple text plain simple text',
+        "upvote" : 12,
+        "downVote" : 01,
+        "media" : 'http://www.christuniversity.in/images/tabimg01.jpg'
+    };
 });
 
+app.controller('AddQ',function($scope,$rootScope,Queries){
+    $rootScope.Title = "Add Query";
+    
+    var data = {
+        "question" : '',
+        "description" : '',
+        "user" : {
+            "name" : 'Alka Sharma',
+            "id" : 'unique ID'
+        },
+        "type": 'question',
+        "media" : 'http://url'
+    }
+    
+    $scope.addItem = function(){
+        console.log(data);
+    }
+    
+
+});
 
 app.controller('ForumCtrl', function ($scope, $rootScope) {
     console.log("Forum Page");
-
-    $scope.queries = [{
-        "uid": '11111eeeee',
-        "name": "Alka Sharma",
-        "type": 'question',
-        "question": "What act can be used against dowry?",
-        "description": "I'm 24 years and my parents are in insisting me to marry. I'm also kinda ok with it with I don' want my parents to give dowry",
-        "upVotes": 32,
-        "downVote": 3
-     }];
-
     //show seach icon
     $rootScope.SearchIcon = true;
 

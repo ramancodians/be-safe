@@ -1,12 +1,12 @@
 $toolbar-color: #F62459;
+//$toolbar-color: #1a989d;
 $sidepanel-color: #ededed;
 $toolbar-height: 53px;
 $dark-grey: #4b4b4b;
 $light-green: #87D37C;
-$title-color : #818181;
-$card-border-color : #cecece;
-$vote-down-color : #b52a2a;
-
+$title-color: #818181;
+$card-border-color: #cecece;
+$vote-down-color: #b52a2a;
 // IMPORTS
 @import 'partials/normalize';
 @import 'partials/variables';
@@ -26,10 +26,9 @@ $vote-down-color : #b52a2a;
 }
 
 // padding to adjust toolbar
-.dashboard{
+.dashboard {
     padding-top: $toolbar-height;
 }
-
 
 toolbar {
     display: block;
@@ -48,8 +47,7 @@ toolbar {
         &:hover {
             background: $toolbar-color - 30;
         }
-        
-        &.right{
+        &.right {
             float: right;
         }
     }
@@ -82,11 +80,14 @@ sidenav {
         text-align: center;
         display: block;
         div {
-            background: $sidepanel-color;
+            background: $sidepanel-color - 40;
             -webkit-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
             -moz-box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
             box-shadow: inset 0px 0px 5px 1px rgba(0, 0, 0, 0.42);
             padding: 30px 20px;
+            width: 110%;
+            left: -5%;
+            position: relative;
             .user-photo {
                 width: 100%;
                 margin: 0px auto;
@@ -100,6 +101,7 @@ sidenav {
         li {
             list-style-type: none;
             border-bottom: 1px solid #ededed;
+            padding: 5px;
             &:last-child {
                 border: 0px;
             }
@@ -125,7 +127,7 @@ sidenav {
                 height: 42px;
                 font-size: 22px;
                 text-align: center;
-                color: #4e79be;
+                color: $toolbar-color;
             }
         }
     }
@@ -133,13 +135,18 @@ sidenav {
 
 home {
     color: #292929;
+    .loader {
+        max-width: 100px;
+        padding: 0px;
+        margin: 0px;
+    }
     panel {
         background: #FFF;
         display: block;
         padding: 10px;
         margin: 10px;
         border-radius: 4px;
-        border: 1px solid $card-border-color;       
+        border: 1px solid $card-border-color;
         h6.title {
             margin-bottom: 10px;
             margin-top: 0px;
@@ -147,105 +154,6 @@ home {
             font-size: 13px;
             color: #666 !important;
         }
-       
-    }
-    
-    panel.forum{
-          font-size: 13px;
-        ul.list{
-             li:last-child{
-                    height: auto;
-                    text-align: center;
-                    font-size: 12px;
-                    background: #eee;
-                    border: 1px solid #eee - 20;
-                    margin-top: 5px;
-                 padding: 10px;
-                }
-            
-            p{
-                color: #888;
-                
-                b{
-                    color: #222;
-                }
-            }
-            
-        }
-    }
-    
-    .news {
-        ul.list {
-            li {
-                display: block;
-                border-bottom: 1px #eee - 20 dashed;
-                padding: 10px 0px;
-                height: 70px;
-                
-                &:last-child{
-                    height: auto;
-                    text-align: center;
-                    font-size: 12px;
-                    background: #eee;
-                    border: 1px solid #eee - 20;
-                    margin-top: 5px;
-                }
-                
-                img {
-                    width: 18%;
-                    margin-right: 5px;
-                    max-width: 60px;
-                    display: inline-block;
-                    
-                }
-                
-                div.xxxx{
-                    display: inline-block;
-                    width: 80%;
-                    float: left;
-                    padding: 0px;
-                    
-                    h6,h5{
-                        padding: 0px;
-                        margin: 0px;
-                    }
-                    
-                    h5{
-                        margin-bottom: 4px;
-                    }
-                    
-                    h6{
-                        color: #888;
-                    }
-                    
-                }
-            }
-        }
-    
-    }
-    
-   
-}
-
-.btn {
-    padding: 10px;
-    background: #dedede;
-    border: 0px;
-    border-radius: 3px;
-    font-weight: bold;
-    color: #333;
-    &.btn-block {
-        display: block;
-        margin-bottom: 3px;
-        width: 100%;
-    }
-}
-
-ul.list {
-    padding: 0px;
-    margin: 0px;
-    li {
-        list-style-type: none;
     }
 }
 
@@ -298,6 +206,64 @@ ul.list {
     }
 }
 
-.forum{
+.forum {
     padding: 10px;
+}
+
+home .card.forum {
+    margin: 10px;
+}
+
+.search {
+    .search-box {
+        padding: 5px;
+        input[type='text'] {
+            width: 100%;
+            margin: 0px;
+            font-size: 17px;
+            border-radius: 3px;
+            border: 0px;
+            display: block;
+            padding: 10px;
+        }
+    }
+}
+
+.addQuery {
+    padding: 10px;
+    form {
+        input[type='text'] {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 0px;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    }
+}
+
+.btn.btn-need-help {
+    color: #FFF;
+    background: $toolbar-color;
+    padding: 0px;
+    
+    &:first-child{
+        margin-top: 20px;
+    }
+    
+    span {
+        position: relative;
+        top: -6px;
+    }
+   
+    i.fa {
+        font-size: 35px;
+        background: $toolbar-color - 20;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        padding: 7px;
+        display: inline-block;
+    }
 }

@@ -1,6 +1,13 @@
 <div class="search" ng-controller="SearchCtrl">
-    <h1>Search Page</h1>
+   <div class="search-box">
+       <input type="text" name="search" ng-model="searchQ" placeholder="Ask laws, help or resources...">
+   </div>
+   
+   <!--if nothing is there in db-->
+   <div class="text-center" ng-show="searchQ">
+    <h6 class="text-center text-warning">Not happy with the question added before!</h6>
     
-    {{url}}
-    
+        <button class="btn btn-success" ui-sref="dashboard.addQuery">Ask new Question</button>
+        
+    </div>
 </div>

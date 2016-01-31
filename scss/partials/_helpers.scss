@@ -31,6 +31,10 @@
         &.open {
             height: auto;
         }
+        
+        .btn{
+            text-align: left;
+        }
     }
 }
 
@@ -310,3 +314,42 @@ input.input {
       transform: scale(2.5);
     }
   }
+
+.text-center{
+    text-align: center;
+}
+
+.text-warning{
+    color: #bc3535 !important; 
+}
+
+.btn-success{
+    background: $light-green !important;
+    color: #FFF !important;
+    border: 1px 
+        
+}
+
+
+.btn {
+    
+    padding: 10px;
+    background: #dedede;
+    border: 0px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #333;
+    &.btn-block {
+        display: block;
+        margin-bottom: 3px;
+        width: 100%;
+    }
+}
+
+ul.list {
+    padding: 0px;
+    margin: 0px;
+    li {
+        list-style-type: none;
+    }
+}

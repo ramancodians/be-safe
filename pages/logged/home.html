@@ -1,50 +1,45 @@
 <home ng-controller="HomeCtrl">
-     <panel class="emercency-services">
-            <h6 class="title">Emercengy Services</h6>
-            
-            <div class="card-drop">             
-                <div class="down-icon">
-                    <i class="fa fa-arrow-circle-o-down fa-3x"  ng-click="cardDropDownToggle = !cardDropDownToggle"></i>
-                </div>
-                <div class="dropdown" ng-class="{'open':cardDropDownToggle}">{{cardDropdownToggle}}
-                     <button class="btn btn-block btn-need-help">Need Help</button>
-            <button class="btn btn-block btn-need-help">Not Feeling Good</button>
-                    
-                </div>
+    <panel class="emercency-services">
+        <h6 class="title">Emercengy Services</h6>
+
+        <div class="card-drop">
+            <div class="down-icon">
+                <i class="fa fa-arrow-circle-o-down fa-3x" ng-click="cardDropDownToggle = !cardDropDownToggle"></i>
             </div>
-        </panel>
-        <panel class="news">
-            <h6 class="title">News</h6>
-            <ul class="list">
-                <li ng-repeat=" i in [1,2,3,4]" class="clearfix">
-                    <img src="imgs/users/me.jpg" class="news-thumb" alt="News">
-                   <div class="xxxx">
-                        <h5>
-                       Goverment announced 5% tax benefits for women.
-                    </h5>
-                    <h6>2 hrs ago </h6>
-                   </div>
-                </li>
-                
-                <li ui-sref="news">More</li>
+            <div class="dropdown" ng-class="{'open':cardDropDownToggle}">{{cardDropdownToggle}}
+                <button class="btn btn-block btn-need-help"><i class="fa fa-phone-square"></i> <span>Phonebook Contacts</span></button>
+                <button class="btn btn-block btn-need-help"><i class="fa fa-warning"></i> <span>Alert Public</span></button>
+                <button class="btn btn-block btn-need-help"><i class="fa fa-shield"></i> <span>Call Police</span></button>
+                <button class="btn btn-block btn-need-help"><i class="fa fa-support"></i> <span>SOS</span></button>
+            </div>
+        </div>
+    </panel>
 
-            </ul>
+    <div class="loader" ng-hide="QueryLoaded">
+        <img ng-src="imgs/loader.gif" class="img-res loader">
+    </div>
 
+    <div class="card forum" ng-repeat="i in queries">
+        <p class="who"><b>{{i.username}}</b> <span ng-if="i.type === 'question'">asked</span></p>
+        <h4 class="ques">{{i.question}}?</h4>
 
-        </panel>
-        <panel class="forum">
-            <h6 class="title">Forum</h6>
-            <ul class="list">
-                <li ng-repeat=" i in [1,2,3,4]" class="clearfix">
-                  <p><b>Alka Sharma</b> asked <b>What is section 21C of women safety?</b></p>
-                </li>
-                <li ui-sref="dashboard.forum">More</li>
-            </ul>
+        <img ng-if="i.media" ng-src="{{i.media}}" class="img-res media" alt="Artcle Image" ng-if="$index%2">
 
-        </panel>
-        <panel class="emercency-services">
-            <h1>Police Services</h1>
+        <p class="details">{{i.description}}
+        </p>
+        <div class="clearfix">
+            <time>3 hrs ago</time>
+            <span class="votes">
+            <button  angular-ripple class="btn up"> <span><i class="fa fa-arrow-up" ng-click="i.upVotes"></i> {{i.upVote}}</span></button>
+            <button angular-ripple class="btn down"><span><i class="fa fa-arrow-down"></i> {{i.downVote}}</span></button>
+            </span>
+        </div>
+    </div>
+    <!--
+    <panel class="emercency-services hide">
+        <h1>Police Services</h1>
 
-        </panel>
-    
+    </panel>
+-->
+
 </home>
