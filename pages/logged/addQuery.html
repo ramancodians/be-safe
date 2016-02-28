@@ -1,12 +1,27 @@
 <div class="addQuery" ng-class="" ng-controller="AddQ">
-  <h5>Add Question</h5>
-   <form>
-       <input type="text" placeholder="Type Your Question Here...">
-       <input type="text" placeholder="(Optional) Description">
+ 
+   <form ng-hide="loading || added">
+       <h5>Add Question</h5>
+       <input type="text" placeholder="Type Your Question Here..." ng-model="questionM">
+       <input type="text" placeholder="(Optional) Description" ng-model="descM">
        <button class="btn btn-default"><i class="fa fa-image"></i> Add Picture</button>
        <br><br><br>
        <button class="btn btn-success" ng-click="addItem()"><i class="fa fa-plus"></i> Add</button>
        <div>
        </div>
    </form>
+   
+     <div class="loader" ng-show="loading">
+        <img ng-src="imgs/loader.gif" class="img-res loader">
+        <h5 class="text-center">Adding Queries!</h5>
+    </div>
+    
+   
+    <div class="center-block text-center" ng-show="added" class="animated bounceUp">
+        <h4>Query Sucessfully Added!</h4>
+        <h1><i class="fa fa-smile-o"></i></h1>
+        <buttom class="btn btn-success">Go Back</buttom>
+        
+    </div>
+   
 </div>

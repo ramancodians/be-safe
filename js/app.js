@@ -65,7 +65,7 @@ app.factory('Auth', function ($firebaseArray, $firebaseAuth) {
     return $firebaseAuth(ref);
 });
 
-app.factory('Queries', function($firebaseArray){
+app.factory('Queries', function ($firebaseArray) {
     var url = "https://be-safe.firebaseio.com/queries";
     var ref = new Firebase(url);
     return $firebaseArray(ref);
@@ -89,7 +89,7 @@ app.controller('SettingsCtrl', function ($scope, $rootScope) {
 
 });
 
-app.controller('DashboardCtrl', function ($scope, $rootScope) {
+app.controller('DashboardCtrl', function ($scope, $rootScope, Auth) {
     $rootScope.Title = "Settings";
     $rootScope.backBtn = false;
 });
@@ -111,48 +111,43 @@ app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
     $rootScope.SearchIcon = true;
     $scope.cardDropDownToggle = false;
     $rootScope.Title = "Home";
-
     $scope.queries = Queries;
     console.log($scope.queries);
-    
-    $scope.queries.$loaded().then(function(){
+
+    $scope.queries.$loaded().then(function () {
         $scope.QueryLoaded = true;
     });
-    
-    
-    
-    // adding a dummy query
-    
-    var dummy = {
-        "username" : 'Vidya N.',
-        "userId" : '124',
-        "type" : 'question',
-        "description" : 'plain simple text plain simple text plain simple text',
-        "upvote" : 12,
-        "downVote" : 01,
-        "media" : 'http://www.christuniversity.in/images/tabimg01.jpg'
-    };
+
+    $scope.upVote = function (id) {
+
+    }
+
 });
 
-app.controller('AddQ',function($scope,$rootScope,Queries){
+app.controller('AddQ', function ($scope, $rootScope, Queries) {
     $rootScope.Title = "Add Query";
-    
-    var data = {
-        "question" : '',
-        "description" : '',
-        "user" : {
-            "name" : 'Alka Sharma',
-            "id" : 'unique ID'
-        },
-        "type": 'question',
-        "media" : 'http://url'
-    }
-    
-    $scope.addItem = function(){
-        console.log(data);
-    }
-    
+    $scope.data = Queries;
+    $scope.added = false;
+    $scope.loading = false;
 
+    $scope.addItem = function () {
+        //console.log(data);
+        $scope.loading = true;
+        $scope.data.$add({
+            "question": $scope.questionM,
+            "description": $scope.descM,
+            "upVote": 0,
+            "downVote": 0,
+            "username": 'Raman Choudhary',
+            "userId": null,
+            "type": 'question',
+            "media": null
+        }).then(function () {
+            $scope.loading = false;
+            $scope.added = true;
+            console.log("data successfully added!");
+        });
+    }
 });
 
 app.controller('ForumCtrl', function ($scope, $rootScope) {
@@ -202,7 +197,6 @@ app.controller('LoginCtrl', function ($scope, $location, Auth) {
 
 
 //Registration Ctrl
-
 app.controller('RegistrationCtrl', function ($scope, $location, Auth) {
     console.log("Registration Page");
     $scope.register = function () {
@@ -220,9 +214,5 @@ app.controller('RegistrationCtrl', function ($scope, $location, Auth) {
         });
     }
 
-}); //REGISTRATION CTRL *********************************************
-
-
-
-
-//FILTERS
+});
+//REGISTRATION CTRL *********************************************

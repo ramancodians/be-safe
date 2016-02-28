@@ -22,9 +22,11 @@
     <div class="card forum" ng-repeat="i in queries">
         <p class="who"><b>{{i.username}}</b> <span ng-if="i.type === 'question'">asked</span></p>
         <h4 class="ques">{{i.question}}?</h4>
+        <div ng-show="i.media">
 
-        <img ng-if="i.media" ng-src="{{i.media}}" class="img-res media" alt="Artcle Image" ng-if="$index%2">
+            <img ng-src="{{i.media}}" class="img-res media" alt="Artcle Image" ng-if="$index%2">
 
+        </div>
         <p class="details">{{i.description}}
         </p>
         <div class="clearfix">

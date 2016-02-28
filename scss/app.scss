@@ -267,3 +267,34 @@ home .card.forum {
         display: inline-block;
     }
 }
+
+.organisation{
+    //here
+}
+
+.organisation-card{
+    margin: 10px;
+    background: #FFF;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    .img-box{
+        min-height: 100px;
+        background: url(imgs/stock/img1.jpg) center center no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+    }
+    
+    .info-box{
+        padding: 10px;
+        background: #d9d9d9;
+        h2{
+            padding: 0px;
+            margin: 0px;
+            text-overflow: ellipsis;
+            color: $sidebar-color - 10;
+        }
+    }
+}
+
+
