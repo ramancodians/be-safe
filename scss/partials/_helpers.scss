@@ -21,7 +21,11 @@
 .card-drop {
     .down-icon {
         text-align: center;
-        color: #37b1ce;
+        color: #d01e1e;
+    }
+    
+    .fa-times-circle-o{
+        color: #a71111;
     }
     .dropdown {
         transition-duration: 1s;
@@ -355,3 +359,5 @@ ul.list {
         list-style-type: none;
     }
 }
+
+

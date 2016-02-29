@@ -4,13 +4,59 @@
 
         <div class="card-drop">
             <div class="down-icon">
-                <i class="fa fa-arrow-circle-o-down fa-3x" ng-click="cardDropDownToggle = !cardDropDownToggle"></i>
+                <i class="fa fa-arrow-circle-o-down fa-3x" ng-click="cardDropDownToggle = !cardDropDownToggle" ng-hide="step2" ng-class="{'fa-rotate-180':cardDropDownToggle}"></i>
+                <i class="fa fa-times-circle-o fa-3x" ng-click="step2 = !step2" ng-show="step2"></i>
             </div>
             <div class="dropdown" ng-class="{'open':cardDropDownToggle}">{{cardDropdownToggle}}
-                <button class="btn btn-block btn-need-help"><i class="fa fa-phone-square"></i> <span>Phonebook Contacts</span></button>
-                <button class="btn btn-block btn-need-help"><i class="fa fa-warning"></i> <span>Alert Public</span></button>
-                <button class="btn btn-block btn-need-help"><i class="fa fa-shield"></i> <span>Call Police</span></button>
-                <button class="btn btn-block btn-need-help"><i class="fa fa-support"></i> <span>SOS</span></button>
+                <button class="btn btn-block btn-need-help" ng-hide="step2" ng-click="tabHandler(0)"><i class="fa fa-phone-square"></i> <span>Phonebook Contacts</span></button>
+                <div class="well phonebook-e" ng-show="emer[0] && step2">
+                    <div class="center-block text-center">                         <h4>Sending SMS..</h4>
+
+                        <i class="fa fa-spinner fa-pulse fa-4x"></i>
+                    </div>
+                    
+                    <ul>
+                        <li>Raman Choudhary</li>
+                        <li>Prajjwal Gupta</li>
+                        <li>Aayush Jhunjhunwala</li>
+                        <li>Karan Sharma</li>
+                        <li>Pooja Yadav</li>
+                    </ul>
+                   
+                </div>
+                
+                <button class="btn btn-block btn-need-help" ng-hide="step2" ng-click="tabHandler(1)"><i class="fa fa-warning"></i> <span>Alert Public</span></button>
+                 <div class="well phonebook-e" ng-show="emer[1] && step2">
+                    <div class="center-block text-center">                         <h4>Alerting nearby people...</h4>
+
+                        <i class="fa fa-marker fa-4x"></i>
+                    </div>
+                    
+                   
+                   
+                </div>
+                
+                <button class="btn btn-block btn-need-help" ng-hide="step2" ng-click="tabHandler(2)"><i class="fa fa-shield"></i> <span>Call Police</span></button>
+                 <div class="well phonebook-e" ng-show="emer[2] && step2">
+                    <div class="center-block text-center">                         <h4>Calling nearby Police Station</h4>
+                        <h5>Madivala Police Station</h5>
+
+                        <i class="fa fa-spinner fa-pulse fa-4x"></i>
+                    </div>
+                    
+                  
+                </div>
+                <button class="btn btn-block btn-need-help" ng-hide="step2" ng-click="tabHandler(3)"><i class="fa fa-support"></i> <span>SOS</span></button>
+                 <div class="well phonebook-e" ng-show="emer[3] && step2">
+                    <div class="center-block text-center">                         <h4>Doing everything..</h4>
+
+                        <i class="fa fa-heart-o fa-pulse fa-4x"></i>
+                         <h4>to help you</h4>
+
+                    </div>
+                    
+                  
+                </div>
             </div>
         </div>
     </panel>

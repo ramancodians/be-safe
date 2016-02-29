@@ -107,6 +107,19 @@ app.controller('SearchCtrl', function ($scope, $rootScope) {
 
 app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
     console.log("Home Page");
+    $scope.step2 = false;
+    $scope.emer = [1,0,0,0];
+    
+     $scope.tabHandler = function (i) {
+        //find the tab with true and 
+        //setting it false
+        $scope.emer[$scope.emer.lastIndexOf(true)] = false;
+        $scope.emer[i] = true;
+         $scope.step2 = true;
+         console.log("called with " + i);
+
+    }
+    
     //show seach icon
     $rootScope.SearchIcon = true;
     $scope.cardDropDownToggle = false;
