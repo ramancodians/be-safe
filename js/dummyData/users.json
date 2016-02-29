@@ -1,0 +1,35 @@
+[{
+    "id": 1,
+    "name": "Sonali Gogia",
+    "repo": {
+        "gold": 0,
+        "silver": 1
+    },
+    "tag": 'Simple as it goes',
+    "queries": [123, 343, 5432],
+    "emergencyContacts": [{
+            "name": 'Raman Choudhary',
+            "phone": '+91 324-324-3243'
+},
+        {
+            "name": 'Alka Sharma',
+            "phone": '+91 324-324-3243'
+},
+        {
+            "name": 'Vidya Verma',
+            "phone": '+91 324-324-3243'
+},
+        {
+            "name": 'Pawan Choudhary',
+            "phone": '+91 324-324-3243'
+},
+        {
+            "name": 'Deepak Choudhary',
+            "phone": '+91 324-324-3243'
+}],
+    "contact" : {
+        "phone" : '+91 1234566',
+        "email" : '+91 34334234'
+    }
+
+}]

@@ -43,6 +43,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/settings",
             templateUrl: "pages/logged/setting.html"
         })
+    .state('dashboard.settings', {
+            url: "/settings",
+            templateUrl: "pages/logged/settings/import-contacts.html"
+        })
         .state('dashboard.organisations', {
             url: "/organisations",
             templateUrl: "pages/logged/organisations.html"
@@ -94,14 +98,20 @@ app.controller('DashboardCtrl', function ($scope, $rootScope, Auth) {
     $rootScope.backBtn = false;
 });
 
-
-app.controller('SearchCtrl', function ($scope, $rootScope) {
+app.controller('SearchCtrl', function ($scope, $rootScope,Queries) {
     // hide the search icon from title bar
     $rootScope.SearchIcon = false;
     $rootScope.backBtn = true;
 
     // set title to search
     $rootScope.Title = "Search";
+    $scope.queries = Queries;
+
+    
+    $scope.queries.$loaded().then(function () {
+        $scope.QueryLoaded = true;
+    });
+    
 });
 
 

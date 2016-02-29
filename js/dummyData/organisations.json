@@ -1,0 +1,19 @@
+// array data
+[{
+    "id": 1,
+    "name": 'Sample Org',
+    "url": 'sample-org',
+    "active-members": 12,
+    "contact": {
+        "phone": 123456789,
+        "address": 'D-10, Ram Nagar Shastri Nagar',
+        "city": 'Bangalore',
+        "website": 'http://sample.com',
+        "fax": null
+    },
+    "person-to-contact": {
+        "name": 'Sameer Mehta',
+        "id": 29
+    },
+    "desc": 'Sample text goes here. Sample text goes here. Sample text goes here'
+}]
