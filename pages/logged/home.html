@@ -27,7 +27,22 @@
                 
                 <button class="btn btn-block btn-need-help" ng-hide="step2" ng-click="tabHandler(1)"><i class="fa fa-warning"></i> <span>Alert Public</span></button>
                  <div class="well phonebook-e" ng-show="emer[1] && step2">
-                    <div class="center-block text-center">                         <h4>Alerting nearby people...</h4>
+                    <div class="center-block text-center"> 
+                        <div>
+                            <i class="fa fa-info-circle fa-2x"></i>
+                            <h4 class="text-warning">No Network!</h4>
+                            <h6>Try calling Police Control Room</h6>
+                        </div>
+                                                                       
+                                                                       
+                                                                       
+                                                                       
+                                                                       
+                                                                    <div ng-show="mapReady">
+                                                                        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>   
+               <h4>Map loaded!</h4>                                                         
+                                                                    </div>
+                                                                        <h4>Alerting nearby people...</h4>
 
                         <i class="fa fa-marker fa-4x"></i>
                     </div>

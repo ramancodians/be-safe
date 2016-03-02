@@ -79,6 +79,14 @@ app.run(function ($rootScope) {
     $rootScope.backBtn = false;
 });
 
+app.config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        //    key: 'your api key',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization'
+    });
+});
+
 
 // SIDENAV CONTROLLERS
 // later convert it to Directive
@@ -146,7 +154,7 @@ app.controller('SearchCtrl', function ($scope, $rootScope, Queries) {
 });
 
 
-app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
+app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries,uiGmapGoogleMapApi) {
     console.log("Home Page");
     $scope.step2 = false;
     $scope.emer = [1, 0, 0, 0];
@@ -161,6 +169,14 @@ app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
 
     }
 
+    //maps goes here -------------------------------------
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    uiGmapGoogleMapApi.then(function(maps) {
+        $scope.mapReady = true;
+    });
+    
+    //----------------------------------------------------
+    
     //show seach icon
     $rootScope.SearchIcon = true;
     $scope.cardDropDownToggle = false;
