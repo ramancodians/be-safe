@@ -4,10 +4,8 @@ var app = angular.module('app', ['ui.router', 'firebase', 'angularRipple']);
 
 // Routes CONFIG
 app.config(function ($stateProvider, $urlRouterProvider) {
-    //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/login");
-    //
     // Now set up the states
     $stateProvider
         .state('login', {
@@ -43,8 +41,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             url: "/settings",
             templateUrl: "pages/logged/setting.html"
         })
-    .state('dashboard.settings', {
-            url: "/settings",
+        .state('dashboard.importContacts', {
+            url: "/settings/importContacts",
             templateUrl: "pages/logged/settings/import-contacts.html"
         })
         .state('dashboard.organisations', {
@@ -93,12 +91,45 @@ app.controller('SettingsCtrl', function ($scope, $rootScope) {
 
 });
 
+app.controller('ImportContactsCtrl',function($scope,$http){
+    
+    $scope.selectedContacts = [];
+    
+    $scope.selectThis = function(item){
+        if($scope.selectedContacts.length == 5){
+            alert("Sorry! Maximum emergency contact is 5.")
+        }else{
+            $scope.selectedContacts.push(item);
+        }
+    }
+
+    $http.get('js/dummyData/contacts.json').success(function(response){
+        console.log(response);
+        $scope.contacts = response;
+    });
+    
+    
+    $scope.isSelected = function(i){
+        for(var j = 0; j <= $scope.selectedContacts.length;j++){
+            console.log("looking for");
+            console.log(i);
+            if($scope.selectedContacts.lastIndexOf(i)){
+                return 0;
+            }else{
+                return 0;
+            }
+            
+        }
+    }
+    
+});
+
 app.controller('DashboardCtrl', function ($scope, $rootScope, Auth) {
     $rootScope.Title = "Settings";
     $rootScope.backBtn = false;
 });
 
-app.controller('SearchCtrl', function ($scope, $rootScope,Queries) {
+app.controller('SearchCtrl', function ($scope, $rootScope, Queries) {
     // hide the search icon from title bar
     $rootScope.SearchIcon = false;
     $rootScope.backBtn = true;
@@ -107,29 +138,29 @@ app.controller('SearchCtrl', function ($scope, $rootScope,Queries) {
     $rootScope.Title = "Search";
     $scope.queries = Queries;
 
-    
+
     $scope.queries.$loaded().then(function () {
         $scope.QueryLoaded = true;
     });
-    
+
 });
 
 
 app.controller('HomeCtrl', function ($scope, $rootScope, Auth, Queries) {
     console.log("Home Page");
     $scope.step2 = false;
-    $scope.emer = [1,0,0,0];
-    
-     $scope.tabHandler = function (i) {
+    $scope.emer = [1, 0, 0, 0];
+
+    $scope.tabHandler = function (i) {
         //find the tab with true and 
         //setting it false
         $scope.emer[$scope.emer.lastIndexOf(true)] = false;
         $scope.emer[i] = true;
-         $scope.step2 = true;
-         console.log("called with " + i);
+        $scope.step2 = true;
+        console.log("called with " + i);
 
     }
-    
+
     //show seach icon
     $rootScope.SearchIcon = true;
     $scope.cardDropDownToggle = false;

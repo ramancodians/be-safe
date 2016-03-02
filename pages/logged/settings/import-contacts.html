@@ -1,6 +1,28 @@
 <div class="importContacts" ng-controller="ImportContactsCtrl">
-    <h3>Import contacts</h3>
-    <div class="item" ng-repeat="i in contacts">
-        {{i.name}} | {{i.phone}}
+    <div class="card">
+        <h4>Emergency contacts {{selectedContacts.length}}</h4>
+        <div ng-show="selectedContacts.length != 0">
+        <div class="item" ng-repeat="i in selectedContacts">
+           <h5 class="npm"><strong>{{i.name}}</strong></h5>
+           <h6 class="npm">{{i.phone}}</h6>
+        </div>
+        </br>
+        <button class="btn btn-default">Cancel</button>
+        <button class="btn btn-success pull pull-right">Save</button>
+    </div>
+         <div  ng-show="selectedContacts.length == 0">
+            <h5>Please Select Contacts to add in list</h5>
+            
+        </div>
+    </div>
+    
+     <div class="card">
+        <h4>All contacts</h4>
+        <div class="item" ng-repeat="i in contacts" ng-click="selectThis(i)" ng-class="{'selected':isSelected(i)}">
+           <h5 class="npm"><strong>{{i.name}}</strong></h5>
+           <h6 class="npm">{{i.phone}}</h6>
+        </div>
+        </br>
     </div>
 </div>
+

@@ -261,6 +261,21 @@ input.input {
 
 .card {
     color: #222;
+    
+    .item{
+        margin-top: 10px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid $toolbar-color - 20;
+        
+        &.selected{
+            background: red;
+        }
+        
+        h6{
+            color: #666;
+        }
+       
+    }
     &.forum {
         .who {
             font-size: 13px;
